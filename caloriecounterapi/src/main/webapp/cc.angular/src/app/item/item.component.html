@@ -1,0 +1,51 @@
+<div class="card border border-dark bg-dark text-white">
+    <div class="card-header">
+        <strong *ngIf="item.item_id == 0"><i class="fa fa-plus-circle"></i> Add New Item </strong>
+        <strong *ngIf="item.item_id != 0"><i class="fa fa-pencil-square-o"></i> Update Item </strong>
+    </div>
+    <form class="form-vertical" #itemForm="ngForm">
+        <div class="card-body">
+            <div class="row">
+                <label class="col-md-2 control-label">Name</label>
+                <div class="col-md-4 mb-3">
+                    <input type="text" class="form-control" placeholder="Enter item name" id="name" name="name" [(ngModel)]="item.name" required minlength="3" #name="ngModel">
+                    <p class="text-danger" *ngIf="name.errors?.['required'] && name.touched">
+                        Name is required!
+                    </p>
+                    <p class="text-danger" *ngIf="name.errors?.['minlength'] && name.touched">
+                        Name must be at least 3 characters long!
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-2 control-label">Calories</label>
+                <div class="col-md-4 mb-3">
+                    <input type="number" class="form-control" placeholder="Enter number Of Calories" id="calories" name="calories" [(ngModel)]="item.calories" required #calories="ngModel">
+                    <p class="text-danger" *ngIf="calories.errors?.['required'] && calories.touched">
+                        Calories is required!
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-2 control-label">Date</label>
+                <div class="col-md-4 mb-3">
+                    <input type="date" class="form-control" placeholder="Enter date of item" id="date" name="date" [(ngModel)]="item.dateOfItem" required #date="ngModel">
+                    <p class="text-danger" *ngIf="date.errors?.['required'] && date.touched">
+                        Date is required!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-right">
+            <button type="button" class="btn btn-success btn-sm" (click)="saveItem()" [disabled]="!itemForm.form.valid">
+                <i class="fa fa-floppy-o"></i> {{item.item_id == 0 ? "Save" : "update" }}
+            </button>&nbsp;
+            <span *ngIf="item.item_id == 0">
+              <button type="reset" class="btn btn-info btn-sm"><i class="fa fa-refresh"></i>Reset</button>
+            </span>
+            <span *ngIf="item.item_id != 0">
+              <button routerLink="/list" type="button" class="btn btn-info btn-sm"><i class="fa fa-list"></i>Show List</button>
+            </span>
+        </div>
+    </form>
+</div>

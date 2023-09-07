@@ -1,0 +1,79 @@
+<div class="card border border-dark bg-dark text-white">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <strong><i class="fa fa-list"></i> {{ title }} </strong>
+    <div class="ml-auto">
+      <i class="fa fa-calculator"></i> Total Calories Consumed = {{ totalCalories }}
+    </div>
+  </div>
+  <div class="card-body table-responsive">
+        <div id="table-desktop">
+            <table class="table table-bordred table-condensed table-hover table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Calories</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+              <tbody>
+              <ng-container *ngFor="let item of items">
+                <tr>
+                  <td>{{item.name}}</td>
+                  <td>{{item.calories}}</td>
+                  <td>{{ item.dateOfItem | date:'shortDate' }}</td>
+                  <td>
+                    <a routerLink="/edit/{{item.item_id}}" class="btn btn-info btn-sm"><i class="fa fa-pencil-square-o"></i> Edit </a>&nbsp;
+                    <button class="btn btn-danger btn-sm" (click)="deleteItem(item)"><i class="fa fa-trash-o"></i> Delete </button>
+                  </td>
+                </tr>
+              </ng-container>
+              <tr align="center" *ngIf="!items || items.length === 0">
+                <td colspan="4">{{noItems}}</td>
+              </tr>
+              </tbody>
+
+            </table>
+        </div>
+        <div id="table-mobile">
+          <table class="table table-bordred table-condensed table-hover table-striped table-dark">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Calories</th>
+              <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <ng-container *ngFor="let item of items">
+              <tr>
+                <td>{{item.name}}</td>
+                <td>{{item.calories}}</td>
+                <td>{{item.dateOfItem | date:'shortDate' }}</td>
+
+                <td>
+                  <a routerLink="/edit/{{item.item_id}}" class="btn btn-info btn-sm"><i class="fa fa-pencil-square-o"></i> Edit </a>&nbsp;
+                  <button class="btn btn-danger btn-sm" (click)="deleteItem(item)"><i class="fa fa-trash-o"></i> Delete </button>
+                </td>
+              </tr>
+            </ng-container>
+            <tr align="center" *ngIf="!items">
+              <td colspan="6">{{noItems}}</td>
+            </tr>
+            <tr align="center" *ngIf="items && items.length == 0">
+              <td colspan="6">{{noItems}}</td>
+            </tr>
+            </tbody>
+          </table>
+<!--          <ng-container *ngFor="let item of items">-->
+<!--            <div class="card bg-dark">-->
+<!--              <div class="card-img-overlay">-->
+<!--                -->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </ng-container>-->
+<!--            <div class="alert alert-dark border border-light text-white text-center" *ngIf="items && items.length == 0" style="background-color: #32383E;">-->
+<!--                {{noItems}}-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>

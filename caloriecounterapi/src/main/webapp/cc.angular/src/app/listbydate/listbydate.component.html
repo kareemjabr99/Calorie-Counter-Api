@@ -1,0 +1,32 @@
+<!--<div class="card border border-dark bg-dark text-white">-->
+<!--  <div class="card-header">-->
+<!--    <strong><i class="fa fa-list"></i>  {{ title }} </strong>-->
+<!--  </div>-->
+<!--  <div class="card-body">-->
+<!--    <div class="grid text-center" style="column-gap: 20px">-->
+<!--      <ng-container *ngFor="let date of dates">-->
+<!--        <div class="g-col-6 btn text-white fa-border fa-space-shuttle" >  {{ date | date:'shortDate' }}  </div>-->
+<!--      </ng-container>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<div class="card border border-dark bg-dark text-white">
+  <div class="card-header">
+    <strong><i class="fa fa-list"></i> {{ title }}</strong>
+  </div>
+  <div class="card-body">
+    <div class="row justify-content-center">
+      <ng-container *ngFor="let date of dates">
+        <div class="col-md-4 mb-3">
+          <button routerLink="/listofitemsbydate/{{ date  | date:'yyyy-MM-dd' }}" class="btn btn-outline-light btn-block custom-button" >
+            {{ date | date:'yyyy-MM-dd' }}
+            <br>
+            {{ getDayOfWeek(date) }}
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+

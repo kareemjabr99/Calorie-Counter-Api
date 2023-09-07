@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="/">
+        <img alt="Logo" src="https://cdn3.iconfinder.com/data/icons/ketogenic-diet-color/64/ketogenic-diet-calculator-calories-nutrition-1024.png" width="35" height="35"> {{title | titlecase}}
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" routerLink="/add">Add New</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" routerLink="/list">Show List</a>
+			</li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/listbydate">List By Date</a>
+      </li>
+		</ul>
+	</div>
+</nav>
+<div class="container col-lg-10" style="margin-top: 20px;">
+    <router-outlet></router-outlet>
+</div>
+
+
